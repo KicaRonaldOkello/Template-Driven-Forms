@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'templateDrivenForms';
+
+  receiveForm(event): void {
+    console.log('form received', event);
+  }
 }

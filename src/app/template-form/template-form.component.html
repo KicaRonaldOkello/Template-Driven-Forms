@@ -1,44 +1,45 @@
 <div class="full-form">
-    <form class="example-form" #myForm="ngForm">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Name" value="" [(ngModel)]="user.name" name="name" #name="ngModel" minlength="4" required>
-          <mat-error *ngIf="name.invalid && name.touched && name.errors.required">
-              Please enter your usename
-          </mat-error>
-          <mat-error *ngIf="name.invalid && name.touched && name.errors.minlength">
-            Please enter a long usename
-        </mat-error>
-        </mat-form-field>
-      
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email" type="email" [(ngModel)]="user.email" name="email" #email="ngModel" email>
-          <mat-error *ngIf="email.invalid && email.touched && email.errors.email">
-            Please enter a correct email
-        </mat-error>
-        </mat-form-field>
+  <form class="example-form" (ngSubmit)="onSubmit(myForm.value)" #myForm="ngForm">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Name" value="" [(ngModel)]="user.name" name="name" #name="ngModel" minlength="4"
+        required>
+      <mat-error *ngIf="name.invalid && name.touched && name.errors.required">
+        Please enter your usename
+      </mat-error>
+      <mat-error *ngIf="name.invalid && name.touched && name.errors.minlength">
+        Please enter a long usename
+      </mat-error>
+    </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" name="password" #password="ngModel" pattern="(?=.*\d)([a-z])(?=.*[A-Z]).{8,}" required>
-            <mat-error *ngIf="password.invalid && password.touched && password.errors.pattern">
-              Please enter a correct pattern of password
-          </mat-error>
-          <mat-error *ngIf="password.invalid && password.touched && password.errors.required">
-            Password is a required field.
-        </mat-error>
-          </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" type="email" [(ngModel)]="user.email" name="email" #email="ngModel" email>
+      <mat-error *ngIf="email.invalid && email.touched && email.errors.email">
+        Please enter a correct email
+      </mat-error>
+    </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Repeat Password" type="password" [(ngModel)]="user.repeatPassword" name="repeatPassword" #repeatPassword="ngModel" pattern="{{ password.value }}" required>
-        </mat-form-field>
-        <mat-error *ngIf="repeatPassword.invalid && repeatPassword.touched && repeatPassword.errors.pattern">
-            Confirm password does not match your password.
-        </mat-error>
-        <mat-error *ngIf="repeatPassword.invalid && repeatPassword.touched && repeatPassword.errors.required">
-            Confirm password is a required field.
-        </mat-error>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" name="password"
+        #password="ngModel" pattern="(?=.*\d)([a-z])(?=.*[A-Z]).{8,}" required>
+      <mat-error *ngIf="password.invalid && password.touched && password.errors.pattern">
+        Please enter a correct pattern of password
+      </mat-error>
+      <mat-error *ngIf="password.invalid && password.touched && password.errors.required">
+        Password is a required field.
+      </mat-error>
+    </mat-form-field>
 
-        <button mat-raised-button color="primary" [disabled]="!myForm.valid">Submit</button>
-      </form>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Repeat Password" type="password" [(ngModel)]="user.repeatPassword"
+        name="repeatPassword" #repeatPassword="ngModel" pattern="{{ password.value }}" required>
+      <mat-error *ngIf="repeatPassword.invalid && repeatPassword.touched && repeatPassword.errors.pattern">
+        Confirm password does not match your password.
+      </mat-error>
+      <mat-error *ngIf="repeatPassword.invalid && repeatPassword.touched && repeatPassword.errors.required">
+        Confirm password is a required field.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary" [disabled]="!myForm.valid">Submit</button>
+  </form>
 </div>
-
-  

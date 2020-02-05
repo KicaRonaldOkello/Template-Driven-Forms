@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-template-form',
@@ -9,6 +9,10 @@ export class TemplateFormComponent implements OnInit {
 
   constructor() { }
 
+  @Output() submitForm = new EventEmitter<string>();
+
+  ngOnInit() {
+  }
   user: IUser = {
     name: '',
     email: '',
@@ -16,7 +20,9 @@ export class TemplateFormComponent implements OnInit {
     repeatPassword: ''
   }
 
-  ngOnInit() {
+
+  onSubmit(myForm) {
+    this.submitForm.emit(myForm);
   }
 
 }
